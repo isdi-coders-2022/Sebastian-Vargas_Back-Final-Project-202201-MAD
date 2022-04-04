@@ -1,0 +1,23 @@
+name: Testing on push
+
+on: push
+
+jobs:
+    test:
+        name: Test passes
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Git checkout
+              uses: actions/checkout@v2
+              env:
+                  DB_USER: ${{secrets.DB_USER}}
+                  DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+                  DB_NAME: ${{secrets.DB_NAME}}
+                  PORT: ${{secrets.PORT}}
+                  SECRET: ${{secrets.SECRET}}
+            - name: Install modules
+              run: npm ci
+
+            - name: Testing
+              run: npm run test
