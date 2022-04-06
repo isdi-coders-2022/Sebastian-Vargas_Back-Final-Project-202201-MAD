@@ -3,13 +3,13 @@ import mongoose from 'mongoose';
 const modelName = 'Product';
 
 const productSchema = new mongoose.Schema({
-    name: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
     image: { type: String, required: false },
     description: { type: String, required: true },
-    price: { type: String, required: true },
     category: { type: String },
-    subCategory: { type: String },
-    number: { type: Number, required: true, default: 0 },
+    subcategory: { type: String },
+    stocks: { type: Number, required: true, default: 0 },
+    price: { type: String, required: true },
 });
 
 productSchema.set('toJSON', {

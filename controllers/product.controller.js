@@ -30,11 +30,11 @@ export const addProduct = async (req, res, next) => {
 }; */
 
 export const updateProduct = async (req, res, next) => {
-    console.log(req.body);
     try {
         const resp = await Product.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
         });
+        console.log(resp);
         res.json(resp);
         res.status(200);
     } catch (err) {
@@ -43,6 +43,7 @@ export const updateProduct = async (req, res, next) => {
 };
 
 export const addProduct = async (req, res, next) => {
+    console.log(req.body);
     try {
         const result = await Product.create(req.body);
         res.status(201).json(result);
